@@ -1,4 +1,4 @@
-# Setup
+# Setup (In Progress)
 
 ## Install Python 3.x with ```Miniconda```
 
