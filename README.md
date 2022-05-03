@@ -128,7 +128,7 @@ Now run this code to confirm that the settings worked correctly.
 
 ```sql
 SHOW VARIABLES WHERE Variable_name LIKE 'character\_set\_%' OR Variable_name LIKE 'collation%';
-```.
+```
 
 
 
