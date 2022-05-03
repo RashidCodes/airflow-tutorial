@@ -21,6 +21,8 @@ Run the code below to install ```mysqlclient```.
 conda install mysqlclient
 ```
 
+Make sure ```mysql-connector-python``` installs correctly.
+
 
 ## Install MySQL
 
@@ -74,10 +76,57 @@ DROP USER 'airflow'@'localhost'
 ```
 
 ## Issues
+
+### New Twitter API
 Turns out you don't need the tweepy package to use Twitter's API. They recently released ```Twitter API v2``` which exposes several endpoints that can be used to manage tweets, get them, etc. You can find the documentation [here](https://developer.twitter.com/en/docs/twitter-api/data-dictionary/introduction).
 
 
+### Date Format
+Twitter uses the ISO-8901 spec for dates, thus, I had to use the ```dateutil``` library to parse the dates.
 
+
+### MySQL config
+
+[This](https://mathiasbynens.be/notes/mysql-utf8mb4#character-sets) article was very helpful to circument character-set issues associated with MySQL. In his article, Mathias explains why we should use the ```utf8mb4``` charset instead of the default ```utf8```. It turns out that MySQL partially implements ```utf-8```. Check out his blog to find out more, but here's the solution to dealing with unicode symbols in tweets.
+
+```sql
+# For each database:
+ALTER DATABASE database_name CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+```
+
+Now change the charset for the ```tweet``` and ```user``` columns.
+
+```sql
+ALTER TABLE tbl_tweets CHANGE tweet tweet VARCHAR(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;```
+
+
+```sql
+ALTER TABLE tbl_tweets CHANGE user user VARCHAR(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;```
+
+
+
+Now we have to modify the config of MySQL which can be found at ```/usr/local/etc/my.cnf```. Modify the configuration according the code below:
+
+
+```text
+[client]
+default-character-set = utf8mb4
+
+[mysql]
+default-character-set = utf8mb4
+
+[mysqld]
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+```
+
+
+Now run this code to confirm that the settings worked correctly.
+
+```sql
+SHOW VARIABLES WHERE Variable_name LIKE 'character\_set\_%' OR Variable_name LIKE 'collation%';
+```.
 
 
 

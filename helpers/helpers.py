@@ -3,7 +3,9 @@
 import os
 import requests
 import json
+from dateutil import parser
 from requests.auth import AuthBase
+from mysql import connector as mysql
 
 
 stream_url = "https://api.twitter.com/2/tweets/search/stream?tweet.fields=created_at&expansions=author_id&user.fields=created_at"
@@ -45,15 +47,14 @@ def delete_all_rules(rules, auth):
 
 
 
-def set_rules(rules, auth):
+def set_rules(auth, rules):
 	if rules is None:
 		return
 
 
-	payload = {"add", rules}
+	payload = {"add": rules}
 
 	response = requests.post(rules_url, auth=auth, json=payload)
-
 
 	if response.status_code != 201:
 		raise Exception(
@@ -78,7 +79,9 @@ class BearerTokenAuth(AuthBase):
 		self.bearer_token_url = "https://api.twitter.com/oauth2/token"
 		self.consumer_key = consumer_key
 		self.consumer_secret = consumer_secret
-		self.bearer_token = self.get_bearer_token()
+		self.bearer_token = self._get_bearer_token()
+		
+
 
 
 	def _get_bearer_token(self):
@@ -155,7 +158,7 @@ class ListenAndSave():
 
 		else:
 			# Save the data
-			populate_table(user, created_at, tweet, id_str, table_name="tbl_tweets")
+			ListenAndSave.populate_table(user, created_at, tweet, id_str, table_name="tbl_tweets")
 
 
 
@@ -214,7 +217,7 @@ class ListenAndSave():
 			return
 
 
-		dbconnect = connect_db()
+		dbconnect = ListenAndSave.connect_db()
 
 		cursor = dbconnect.cursor()
 		cursor.execute("USE airflowdb")
@@ -231,27 +234,38 @@ class ListenAndSave():
                 `tweet` VARCHAR(255) NOT NULL,  
                 `id_str` VARCHAR(100),  
                 PRIMARY KEY (`id`)
-            ); 
-			     
-			INSERT INTO {table_name}(user, created_at, tweet, id_str) 
-			VALUES ({user}, {created_at}, {tweet}, {id_str});
-
+            )
         """
+
+		tweet_details = {
+			'user': user,
+			'tweet': tweet,
+			'id_str': id_str,
+			'created_at': parser.isoparse(created_at)
+		}
+
+
+		insert_values = f"""
+		    INSERT INTO {table_name}(user, tweet, id_str, created_at)
+		    VALUES (%(user)s, %(tweet)s, %(id_str)s, %(created_at)s)
+		"""
 
 
 
 		try:
 			cursor.execute(query)
-			commit()
+			cursor.execute(insert_values, tweet_details)
+			dbconnect.commit()
 			print("committed")
 		
 		except mysql.Error as e:
 			print(e)
 			dbconnect.rollback()
+			print("rolled back")
 
-
-		cursor.close()
-		dbconnect.close()
+		finally:
+			cursor.close()
+			dbconnect.close()
 
 
 		return
