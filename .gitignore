@@ -1,4 +1,5 @@
 env/
 kt
 config.cfg
-helpers/__pycache/
+helpers/__pycache
+.DS_Store
