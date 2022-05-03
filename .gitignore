@@ -1,5 +1,5 @@
 env/
 kt
 config.cfg
-mysqlUsers.png
-helpers/__pycache/
+helpers/__pycache
+.DS_Store
