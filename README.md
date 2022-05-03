@@ -51,7 +51,7 @@ CREATE DATABASE airflowdb CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 Create a new user for the database.
 
 ```sql
-CREATE USER 'airflow'@'localhost' IDENTIFIED BY 'thisIsAwesome@20'
+CREATE USER 'airflow'@'localhost' IDENTIFIED BY 'python2019'
 ```
 
 Now we need to make sure the airflow user has access to the databases.
@@ -74,6 +74,8 @@ If you need to delete the user you just added, use the code below
 ```sql
 DROP USER 'airflow'@'localhost'
 ```
+
+<br/>
 
 ## Issues
 
@@ -123,6 +125,7 @@ character-set-server = utf8mb4
 collation-server = utf8mb4_unicode_ci
 ```
 
+<br/>
 
 Now run this code to confirm that the settings worked correctly.
 
