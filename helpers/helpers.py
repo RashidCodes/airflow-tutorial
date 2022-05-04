@@ -70,9 +70,6 @@ def setup_rules(auth, sample_rules):
 
 
 
-
-
-
 class BearerTokenAuth(AuthBase):
 
 	def __init__(self, consumer_key, consumer_secret):
@@ -110,7 +107,6 @@ class BearerTokenAuth(AuthBase):
 
 
 
-
 class ListenAndSave():
 	
 	def __init__(self, auth=None):
@@ -137,6 +133,7 @@ class ListenAndSave():
 				return pl
 
 
+
 	def save_data(self):
 
 		# Get the data from stream_connect
@@ -159,7 +156,6 @@ class ListenAndSave():
 		else:
 			# Save the data
 			ListenAndSave.populate_table(user, created_at, tweet, id_str, table_name="tbl_tweets")
-
 
 
 
@@ -196,8 +192,6 @@ class ListenAndSave():
 			print(e) 
 	
 
-
-	
 
 	@staticmethod
 	def populate_table(user, created_at, tweet, id_str, table_name=None):
