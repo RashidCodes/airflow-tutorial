@@ -139,7 +139,7 @@ SHOW VARIABLES WHERE Variable_name LIKE 'character\_set\_%' OR Variable_name LIK
 
 <blockquote> Make sure you create a user with the right permissions </blockquote>
 
-To observe the tasks their corresponding statuses, airflow uses a database. Thus it's essential that one is set up. Run ```airflow db init``` to initialise an ```SQLite```database using ```alembic``` so that it matches the latest Airflow release.
+To observe the tasks their corresponding statuses, airflow uses a database. Thus it's essential that one is set up. Run ```airflow db init``` to initialise an ```SQLite``` database using ```alembic``` so that it matches the latest Airflow release.
 
 ```SQLite``` doesn't support parallelization. Thus, we'll use ```MySQL``` since we already have a MySQL DB setup.
 
@@ -159,7 +159,7 @@ result_backend = 'db+scheme://user:password@host:port/dbname'
 
 
 
-# Authentication plugin ```caching_sha2_password``` cannot be loaded
+## Authentication plugin ```caching_sha2_password``` cannot be loaded
 
 You might run into this error with MySQL when you try to initialise your database in MySQL. Just configure it to run in ```mysql_native_password``` mode.
 
@@ -171,6 +171,6 @@ ALTER USER 'yourusername'@'localhost' IDENTIFIED WITH mysql_native_password BY '
 <br/>
 
 
-# Useful links to learn about ```Celery```.
+## Useful links to learn about ```Celery```.
 - [First steps with Celery](https://docs.celeryq.dev/en/latest/getting-started/first-steps-with-celery.html#first-steps)
 - [Database backend settings](https://docs.celeryq.dev/en/latest/getting-started/first-steps-with-celery.html#first-steps)
