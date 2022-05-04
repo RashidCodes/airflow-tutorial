@@ -29,9 +29,7 @@ Make sure ```mysql-connector-python``` installs correctly.
 Install MySQL with Homebrew. Check [this](https://gist.github.com/nrollr/3f57fc15ded7dddddcc4e82fe137b58e) gist to learn the installation process.
 
 
-
 <br/>
-
 
 
 # Creating your first data pipeline in Python
@@ -91,6 +89,8 @@ Twitter uses the ISO-8901 spec for dates, thus, I had to use the ```dateutil``` 
 
 [This](https://mathiasbynens.be/notes/mysql-utf8mb4#character-sets) article was very helpful to circumvent character-set issues associated with MySQL. In his article, Mathias explains why we should use the ```utf8mb4``` charset instead of the default ```utf8```. It turns out that MySQL partially implements ```utf-8```. Check out his blog to find out more, but here's the solution to dealing with unicode symbols in tweets and users' names.
 
+
+
 ```sql
 # For each database:
 ALTER DATABASE database_name CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
@@ -133,6 +133,44 @@ Now run this code to confirm that the settings worked correctly.
 SHOW VARIABLES WHERE Variable_name LIKE 'character\_set\_%' OR Variable_name LIKE 'collation%';
 ```
 
+<br/>
+
+## Prepare your database
+
+<blockquote> Make sure you create a user with the right permissions </blockquote>
+
+To observe the tasks their corresponding statuses, airflow uses a database. Thus it's essential that one is set up. Run ```airflow db init``` to initialise an ```SQLite```database using ```alembic``` so that it matches the latest Airflow release.
+
+```SQLite``` doesn't support parallelization. Thus, we'll use ```MySQL``` since we already have a MySQL DB setup.
+
+
+<br/>
+
+## Database backend settings for Celery
+
+Go [here](https://docs.celeryq.dev/en/latest/userguide/configuration.html#database-backend-settings) to learn how to use a database backend.
+
+```python
+result_backend = 'db+scheme://user:password@host:port/dbname'
+```
+
+
+<br/>
 
 
 
+# Authentication plugin ```caching_sha2_password``` cannot be loaded
+
+You might run into this error with MySQL when you try to initialise your database in MySQL. Just configure it to run in ```mysql_native_password``` mode.
+
+```sql
+ALTER USER 'yourusername'@'localhost' IDENTIFIED WITH mysql_native_password BY 'youpassword';
+```
+
+ 
+<br/>
+
+
+# Useful links to learn about ```Celery```.
+- [First steps with Celery](https://docs.celeryq.dev/en/latest/getting-started/first-steps-with-celery.html#first-steps)
+- [Database backend settings](https://docs.celeryq.dev/en/latest/getting-started/first-steps-with-celery.html#first-steps)

@@ -1,0 +1,63 @@
+  ____________       _____________
+ ____    |__( )_________  __/__  /________      __
+____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+[[34m2022-05-04 22:17:26,149[0m] {[34mscheduler_job.py:[0m693} INFO[0m - Starting the scheduler[0m
+[[34m2022-05-04 22:17:26,149[0m] {[34mscheduler_job.py:[0m698} INFO[0m - Processing each file at most -1 times[0m
+[[34m2022-05-04 22:17:26,213[0m] {[34mexecutor_loader.py:[0m106} INFO[0m - Loaded executor: CeleryExecutor[0m
+[[34m2022-05-04 22:17:26,226[0m] {[34mmanager.py:[0m156} INFO[0m - Launched DagFileProcessorManager with pid: 71066[0m
+[[34m2022-05-04 22:17:26,232[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-04 22:17:26,900[0m] {[34msettings.py:[0m55} INFO[0m - Configured default timezone Timezone('UTC')[0m
+[[34m2022-05-04 22:17:47,338[0m] {[34mscheduler_job.py:[0m176} INFO[0m - Exiting gracefully upon receiving signal 2[0m
+[[34m2022-05-04 22:17:48,349[0m] {[34mprocess_utils.py:[0m125} INFO[0m - Sending Signals.SIGTERM to group 71066. PIDs of all processes in the group: [71095, 71096, 71066][0m
+[[34m2022-05-04 22:17:48,349[0m] {[34mprocess_utils.py:[0m80} INFO[0m - Sending the signal Signals.SIGTERM to group 71066[0m
+[2022-05-04 22:17:48,447] {process_utils.py:240} INFO - Waiting up to 5 seconds for processes to exit...
+[[34m2022-05-04 22:17:48,449[0m] {[34mprocess_utils.py:[0m75} INFO[0m - Process psutil.Process(pid=71095, status='terminated', started='22:17:47') (71095) terminated with exit code None[0m
+[[34m2022-05-04 22:17:48,449[0m] {[34mprocess_utils.py:[0m75} INFO[0m - Process psutil.Process(pid=71096, status='terminated', started='22:17:47') (71096) terminated with exit code None[0m
+[[34m2022-05-04 22:17:48,633[0m] {[34mprocess_utils.py:[0m75} INFO[0m - Process psutil.Process(pid=71066, status='terminated', exitcode=0, started='22:17:26') (71066) terminated with exit code 0[0m
+[[34m2022-05-04 22:17:48,650[0m] {[34mprocess_utils.py:[0m125} INFO[0m - Sending Signals.SIGTERM to group 71066. PIDs of all processes in the group: [][0m
+[[34m2022-05-04 22:17:48,650[0m] {[34mprocess_utils.py:[0m80} INFO[0m - Sending the signal Signals.SIGTERM to group 71066[0m
+[[34m2022-05-04 22:17:48,650[0m] {[34mprocess_utils.py:[0m94} INFO[0m - Sending the signal Signals.SIGTERM to process 71066 as process group is missing.[0m
+[[34m2022-05-04 22:17:48,650[0m] {[34mscheduler_job.py:[0m765} INFO[0m - Exited execute loop[0m
+  ____________       _____________
+ ____    |__( )_________  __/__  /________      __
+____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+[[34m2022-05-04 22:18:13,720[0m] {[34mscheduler_job.py:[0m693} INFO[0m - Starting the scheduler[0m
+[[34m2022-05-04 22:18:13,720[0m] {[34mscheduler_job.py:[0m698} INFO[0m - Processing each file at most -1 times[0m
+[[34m2022-05-04 22:18:13,782[0m] {[34mexecutor_loader.py:[0m106} INFO[0m - Loaded executor: CeleryExecutor[0m
+[[34m2022-05-04 22:18:13,795[0m] {[34mmanager.py:[0m156} INFO[0m - Launched DagFileProcessorManager with pid: 71101[0m
+[[34m2022-05-04 22:18:13,800[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-04 22:18:14,460[0m] {[34msettings.py:[0m55} INFO[0m - Configured default timezone Timezone('UTC')[0m
+[[34m2022-05-04 22:23:13,855[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-04 22:28:13,891[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-04 22:29:26,156[0m] {[34mscheduler_job.py:[0m350} INFO[0m - 1 tasks up for execution:
+	<TaskInstance: tutorial_taskflow_api_etl.extract manual__2022-05-04T12:29:25.047461+00:00 [scheduled]>[0m
+[[34m2022-05-04 22:29:26,156[0m] {[34mscheduler_job.py:[0m415} INFO[0m - DAG tutorial_taskflow_api_etl has 0/16 running and queued tasks[0m
+[[34m2022-05-04 22:29:26,156[0m] {[34mscheduler_job.py:[0m501} INFO[0m - Setting the following tasks to queued state:
+	<TaskInstance: tutorial_taskflow_api_etl.extract manual__2022-05-04T12:29:25.047461+00:00 [scheduled]>[0m
+[[34m2022-05-04 22:29:26,159[0m] {[34mscheduler_job.py:[0m543} INFO[0m - Sending TaskInstanceKey(dag_id='tutorial_taskflow_api_etl', task_id='extract', run_id='manual__2022-05-04T12:29:25.047461+00:00', try_number=1, map_index=-1) to executor with priority 3 and queue default[0m
+[[34m2022-05-04 22:29:26,159[0m] {[34mbase_executor.py:[0m91} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'tutorial_taskflow_api_etl', 'extract', 'manual__2022-05-04T12:29:25.047461+00:00', '--local', '--subdir', '/Users/rashid/miniconda3/lib/python3.9/site-packages/airflow/example_dags/tutorial_taskflow_api_etl.py'][0m
+[[34m2022-05-04 22:29:26,330[0m] {[34mscheduler_job.py:[0m596} INFO[0m - Executor reports execution of tutorial_taskflow_api_etl.extract run_id=manual__2022-05-04T12:29:25.047461+00:00 exited with status queued for try_number 1[0m
+[[34m2022-05-04 22:29:26,337[0m] {[34mscheduler_job.py:[0m630} INFO[0m - Setting external_id for <TaskInstance: tutorial_taskflow_api_etl.extract manual__2022-05-04T12:29:25.047461+00:00 [queued]> to e03c81c5-ea48-4ead-a112-7c0ff2788b05[0m
+[[34m2022-05-04 22:33:13,953[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-04 22:38:14,019[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-04 22:43:14,139[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[2022-05-04 23:15:05,097] {processor.py:233} WARNING - Killing DAGFileProcessorProcess (PID=74220)
+[2022-05-04 23:15:05,108] {processor.py:233} WARNING - Killing DAGFileProcessorProcess (PID=74221)
+[2022-05-04 23:19:10,093] {processor.py:233} WARNING - Killing DAGFileProcessorProcess (PID=74238)
+[2022-05-04 23:19:10,105] {processor.py:233} WARNING - Killing DAGFileProcessorProcess (PID=74239)
+[[34m2022-05-04 23:22:27,463[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-04 23:27:27,519[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-04 23:32:30,499[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[2022-05-05 00:03:19,165] {processor.py:233} WARNING - Killing DAGFileProcessorProcess (PID=75926)
+[2022-05-05 00:03:19,209] {processor.py:233} WARNING - Killing DAGFileProcessorProcess (PID=75927)
+[2022-05-05 00:05:39,340] {processor.py:233} WARNING - Killing DAGFileProcessorProcess (PID=76030)
+[2022-05-05 00:05:39,357] {processor.py:233} WARNING - Killing DAGFileProcessorProcess (PID=76032)
+[[34m2022-05-05 00:08:58,598[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-05 00:13:58,648[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-05 00:18:58,699[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-05 00:23:58,746[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-05 00:28:58,755[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
