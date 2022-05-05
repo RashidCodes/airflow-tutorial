@@ -62,3 +62,5 @@ ___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
 [[34m2022-05-05 00:23:58,746[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
 [[34m2022-05-05 00:28:58,755[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
 [[34m2022-05-05 00:33:58,775[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-05 00:38:58,819[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m
+[[34m2022-05-05 00:43:58,862[0m] {[34mscheduler_job.py:[0m1218} INFO[0m - Resetting orphaned tasks for active dag runs[0m

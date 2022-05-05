@@ -174,3 +174,68 @@ ALTER USER 'yourusername'@'localhost' IDENTIFIED WITH mysql_native_password BY '
 ## Useful links to learn about ```Celery```.
 - [First steps with Celery](https://docs.celeryq.dev/en/latest/getting-started/first-steps-with-celery.html#first-steps)
 - [Database backend settings](https://docs.celeryq.dev/en/latest/getting-started/first-steps-with-celery.html#first-steps)
+
+
+<br/>
+
+## How to kill the airflow scheduler and the server
+
+```bash
+kill $(ps -o ppid= -p $(cat ~/airflow/airflow-webserver.pid))
+```
+
+
+## Dag definition
+
+Checkout a sample pipeline definition [here](https://airflow.apache.org/docs/apache-airflow/stable/tutorial.html). Remember that ```sample_dag.py``` is just a dag definition file. The tasks defined in the script execute in a different context than the script self. Tasks are scheduled on different workers at different points in time; so this script cannot be used to communicate between tasks.
+
+In the event that you want tasks to communicate with each other then you should explore a more advanced feature called [XComms](https://airflow.apache.org/docs/apache-airflow/stable/concepts/xcoms.html).
+
+
+<br/>
+
+### Default arguments
+
+Tasks created as part of a ```DAG``` are simply instantiations of specific operators. These operators inherit from the ```BaseOperator```. For more information about the ```BaseOperator```'s parameters and what they do, refer to <code><b>airflow.models.BaseOperator</b></code> documentation.
+
+<br/>
+
+### Adding DAG and Tasks Documentation
+
+DAG documentation supports only markdown at the moment, however task documentation supports:
+- Plain text
+- Markdown
+- reStructuredText
+- json
+- yaml
+
+<br/>
+
+### Testing
+
+A scheduler runs your task ***for*** a specific date and time, not ***at***.
+
+```bash
+
+# test print_date
+airflow tasks test sample_dag_tutorial print_date 2022-05-05
+
+# test sleep
+airflow tasks test sample_dag_tutorial sleep 2022-05-05
+
+# testing templated
+airflow tasks test sample_dag_tutorial templated 2022-05-05
+
+```
+
+```airflow tasks test``` runs tasks locally, outputs their log to stdout, does not bother with dependencies, and does not communicate state (running, success, failed..) to the database. **It simply allows testing a single task instance.
+
+The same applies to 
+
+```bash
+airflow dags test sample_dag_tutorial 2022-05-05
+```
+
+
+
+

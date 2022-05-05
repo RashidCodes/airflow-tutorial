@@ -341,3 +341,19 @@
 127.0.0.1 - - [05/May/2022:00:10:25 +1000] "POST /dag_stats HTTP/1.1" 200 10614 "http://localhost:8080/home?status=all" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
 127.0.0.1 - - [05/May/2022:00:10:25 +1000] "POST /blocked HTTP/1.1" 200 121 "http://localhost:8080/home?status=all" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
 127.0.0.1 - - [05/May/2022:00:10:25 +1000] "POST /task_stats HTTP/1.1" 200 37305 "http://localhost:8080/home?status=all" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
+  ____________       _____________
+ ____    |__( )_________  __/__  /________      __
+____  /| |_  /__  ___/_  /_ __  /_  __ \_ | /| / /
+___  ___ |  / _  /   _  __/ _  / / /_/ /_ |/ |/ /
+ _/_/  |_/_/  /_/    /_/    /_/  \____/____/|__/
+Running the Gunicorn Server with:
+Workers: 4 sync
+Host: 0.0.0.0:8080
+Timeout: 120
+Logfiles: - -
+Access Logformat: 
+=================================================================
+[[34m2022-05-05 00:42:07,134[0m] {[34mwebserver_command.py:[0m252} ERROR[0m - [0 / 0] Some workers seem to have died and gunicorn did not restart them as expected[0m
+[[34m2022-05-05 00:42:17,145[0m] {[34mwebserver_command.py:[0m264} INFO[0m - [0 / 0] Spawning 1 workers[0m
+[[34m2022-05-05 00:44:17,170[0m] {[34mwebserver_command.py:[0m217} ERROR[0m - No response from gunicorn master within 120 seconds[0m
+[[34m2022-05-05 00:44:17,170[0m] {[34mwebserver_command.py:[0m218} ERROR[0m - Shutting down webserver[0m
